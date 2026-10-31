@@ -1,0 +1,111 @@
+SDLC
+--------
+
+2 repos:
+
+https://github.com/DaycheAcademy/sdlc-project
+https://github.com/DaycheAcademy/sdlc-class
+
+
+datasets: 
+https://data.nasa.gov/dataset/cmapss-jet-engine-simulated-data
+https://www.nasa.gov/intelligent-systems-division/discovery-and-systems-health/pcoe/pcoe-data-set-repository/
+
+
+virtual environments in linux: refer to Session_4 notes in linux class (pushed into class repo)
+---------------------------------------------
+
+REST API: works on HTTP request and response messages
+
+GET
+POST
+PUT
+PATCH
+DELETE
+
+
+HTTP Header (meta data) -> content-type: JSON
+
+
+responses ALWAYS come with a status code:
+
+200: request succeeded 
+201: created
+400: bad request
+404: not found
+422: unprocessable
+500: internal server error
+503: service unavailable
+
+
+
+
+----------------------
+
+JSON Recap:
+
+# python native
+
+
+JSON Term		Python Term
+---------		-----------
+object			dictionary
+array			list
+string			str
+number			numeric (excluding complex)
+boolean			bool
+null			None
+
+
+------------------------------
+
+CMAPPS Dataset Download:
+
+1 - Set-Location "D:\Dayche\SDLC\class_files" 
+2 - New-Item -ItemType Directory -Force -Path ".\data\raw\cmapps"
+3 - Invoke-WebRequest -Uri "https://phm-datasets.s3.amazonaws.com/NASA/6.+Turbofan+Engine+Degradation+Simulation+Data+Set.zip" -OutFile ".\data\raw\cmapps\cmapps.zip"
+4 - Get-Item ".\data\raw\cmapps\cmapps.zip"
+5 - Expand-Archive -Path ".\data\raw\cmapps\cmapps.zip" -DestinationPath ".\data\raw\cmapps" -Force
+6 - Get-ChildItem ".\data\raw\cmapps" -Recurse
+
+--------------------------------
+
+TDD: Test Driven Design
+
+monolithic, micro-service, domain-driven-design, SOA, RAD, TDD, micro-kernel, ...
+
+1 - write test functions (unit test)
+2 - make tests fail ! (MUST)
+3 - write actual functions
+4 - test again until all tests pass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
