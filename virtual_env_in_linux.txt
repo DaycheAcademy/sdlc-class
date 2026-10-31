@@ -1,0 +1,195 @@
+Python Virtual Environment:
+---------------------------
+
+- virtualenv
+- virtualenvwrapper
+
+- apt install virtualenv virtualenvwrapper -y
+- apt install python3-pip python3-envs -y
+
+path:
+    - virtualenv -> /usr/bin/virtualenv
+    - virtualenvwrapper -> /usr/share/virtualenvwrapper
+    (/usr/local/bin/virtualenvwrapper)
+
+
+- nano .bashrc: (append these lines)
+export WORKON_HOME=$HOME/.virtualenvs
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+export VIRTUALENVWRAPPER_VIRTUALENV=/usr/bin/virtualenv
+source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
+
+- source .bashrc  -> re-read .bashrc file
+
+
+Note: Ubuntu 2024 / Kubuntu 2025 : default python version: 3.12
+Note: you cannot delete / modify default python version
+
+--------------------
+
+to add multiple python versions:
+
+1) add repository: add-apt-repository ppa:deadsnakes/ppa
+                   apt install python3.13 python3.11
+
+2) using pyenv (recommended)
+https://realpython.com/intro-to-pyenv/
+
+
+------------------------
+
+- creating virtual environments:
+    mkvirtualenv --python=/usr/bin/python3.12 myenv
+
+    -> this will create a virtual environment with python
+       version 3.12 in ~/.virtualenvs
+
+    - Note: to exit from virtual environment: deactivate
+    - Note: to list virtual environment: workon
+    - Note: to enter a virtual environment: workon myenv
+
+-------------------------------
+
+project directory structure:
+
+myprj
+    main.py (just for demo purposes)
+    dayche
+        __init__.py
+        nn
+            __init__.py
+            conv
+                __init__.py
+                cnn.py
+                resnet.py
+                alexnet.py
+        monitor
+            __init__.py
+            epochmonitor.py
+    tests
+        __init__.py
+        test_x.py
+        test_y.py
+    pyproject.toml
+    requirements.txt
+    .gitignore
+    setup.py (optional)
+    README.md
+    .envrc
+    dockerfile
+    *.yml
+
+
+----------------------------
+
+Automating the connection of virtual environment and project directoy:
+
+
+- apt install direnv
+- nano .bashrc:
+    eval "$(direnv hook bash)"
+
+- cd into project directory:
+    create .envrc file:
+        workon myenv
+
+- direnv allow
+
+
+if you get 'workon: command not found'
+then:
+    add all lines related to virtualenv and virtualenvwrapper from bashrc file to the .envrc:
+
+        export WORKON_HOME="$HOME/.virtualenvs"
+        export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+        source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
+        workon myenv
+
+
+if it still does not load the virtual environment
+i.e. you do not see : (myenv) mehdi@dayche:~/projects/myprj$
+then:
+
+    append these lines to the end of .bashrc
+
+
+_venv_ps1() {
+  if [ -n "$VIRTUAL_ENV" ]; then
+    printf '(%s) ' "$(basename "$VIRTUAL_ENV")"
+  fi
+}
+
+PS1='$(_venv_ps1)'"$PS1"
+
+======================================================
+
+
+Linux Disk Management
+
+
+- device file: tells kernel how to collaborate and communicate with the hardware
+- location: /dev
+
+- for disks: /dev/sda /dev/sdb /dev/sdc ...
+             /dev/hda /dev/hdb ....
+             /dev/pool
+             /dev/mapper/...
+             /dev/loop
+
+
+- to view: fdisk -l
+
+------------------------------
+- partitioning:
+
+- fdisk /dev/sdb
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
